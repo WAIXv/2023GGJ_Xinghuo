@@ -71,17 +71,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 
-# Odin Serilizer Ignore
-# Ignore the auto-generated AOT compatibility dll.
-/Assets/Plugins/Sirenix/Assemblies/AOT/*
-
-# Ignore all unpacked demos.
-/Assets/Plugins/Sirenix/Demos/*
-
-# But keep the demo packages themselves.
-!/Assets/Plugins/Sirenix/Demos/*.unitypackage
-
-
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 .idea/
@@ -176,3 +165,12 @@ fabric.properties
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+
+# Others
+Assembly-CSharp.csproj.DotSettings
+
+
+# 忽略存档系统保存在Asset中的数据
+/[Aa]ssets/saves
+/[Aa]ssets/saves.meta
