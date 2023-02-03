@@ -1,25 +1,37 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Utils.EventCenter;
 
 namespace Blocks_Folder
 {
     public class BlockBase : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler
     {
         public BlockAttribute info;
+        
+        protected Queue<int> _stateQueue;
 
-        public void OnPointerEnter(PointerEventData eventData)
+        protected EventCenter EventCenter;
+
+        private void Start()
         {
-            Debug.Log("Enter " + name);
+            EventCenter = EventCenter.GetInstance();
         }
 
-        public void OnPointerExit(PointerEventData eventData)
+        public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            Debug.Log("Exit " + name);
+            EventCenter.EventTrigger(EventTypes.MouseEnterUI,this);
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public virtual void OnPointerExit(PointerEventData eventData)
         {
-            Debug.Log("Click" + name);
+            EventCenter.EventTrigger(EventTypes.MouseExitUI,this);
+        }
+
+        public virtual void OnPointerClick(PointerEventData eventData)
+        {
+            EventCenter.EventTrigger(EventTypes.MouseClickUI,this);
         }
     }
 }

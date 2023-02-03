@@ -96,7 +96,6 @@ namespace Utils.EventCenter
             {
                 if (typeof(T) == eventDic[name].type)
                 {
-                    Debug.Log(name + " " + info);
                     if ((eventDic[name] as EventInfo<T>).actions != null)
                         (eventDic[name] as EventInfo<T>).actions.Invoke(info);
                 }
@@ -113,7 +112,6 @@ namespace Utils.EventCenter
         {
             if (eventDic.ContainsKey(name))
             {
-                Debug.Log(name);
                 if ((eventDic[name] as EventInfo).actions != null)
                     (eventDic[name] as EventInfo).actions.Invoke();
             }

@@ -218,11 +218,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9791e18f3d4d0fa4bf78d95cb19db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textAsset: {fileID: 4900000, guid: e42623d1941b7f8439988a8a84766846, type: 3}
   _basePoint: {fileID: 2009712456}
-  _blockLength: 52
-  _blockHeight: 52
-  _count: 5
-  testObj: {fileID: 8429490994457382949, guid: 879e88752cdc8ad4088732da5a4cc426, type: 3}
+  _blockLength: 102
+  _blockHeight: 102
+  _rockPrefab: {fileID: 8429490994457382949, guid: 5a58421b6e7e02042aca940485942130, type: 3}
+  _emptyPrefab: {fileID: 8429490994457382949, guid: 879e88752cdc8ad4088732da5a4cc426, type: 3}
+  _juciePrefab: {fileID: 8429490994457382949, guid: 642aac283f38aae4390eb7ba2367b95d, type: 3}
 --- !u!4 &1573965319
 Transform:
   m_ObjectHideFlags: 0
