@@ -21,6 +21,7 @@ namespace Map_Folder
         [SerializeField] private GameObject _juciePrefab;
         [SerializeField] private GameObject _bigJuciePrefab;
         [SerializeField] private GameObject _hardSoulPrefab;
+        [SerializeField] private GameObject _finalPrefab;
 
         public GameObject[][] _mapMatrix;
 
@@ -31,9 +32,6 @@ namespace Map_Folder
             _basePoint = GameObject.Find("MapBasePoint").GetComponent<RectTransform>();
             _blockHeight = _config.blockHeight;
             _blockLength = _config.blockLength;
-            LoadMapMatrix();
-            CreateMap();
-            GameMgr.GetInstance().SetFinalandStartPoint();
         }
 
         public static MapCreator GetInstance()
@@ -41,7 +39,7 @@ namespace Map_Folder
             return instance;
         }
 
-        private void CreateMap()
+        public void CreateMap()
         {
             Vector2 placer = _basePoint.position;
             var iOffset = 0f;
@@ -71,11 +69,12 @@ namespace Map_Folder
                     }
                 }
             }
+            GameMgr.GetInstance().SetFinalandStartPoint();
         }
 
-        private void LoadMapMatrix()
+        public void LoadMapMatrix(TextAsset txtFile)
         {
-            string[] lines = _textAsset.text.Split('\n');
+            string[] lines = txtFile.text.Split('\n');
             _mapMatrix = new GameObject[lines.Length - 1][];
             
             for (int j = 0; j < lines.Length - 1; j++)
@@ -100,23 +99,25 @@ namespace Map_Folder
                         case '4':
                             _mapMatrix[j][i] = _hardSoulPrefab;
                             break;
+                        case '*':
+                            _mapMatrix[j][i] = _finalPrefab;
+                            break;
                     }
                 }
             }
             
         }
 
-        public void ReloadMap()
+        public void ReloadMap(TextAsset newFile)
         {
-            foreach (var objs in _mapMatrix)
-            {
-                foreach (var obj in objs)
-                {
-                    Destroy(obj);
-                }
-            }
-            LoadMapMatrix();
-            CreateMap();
+            // foreach (var objs in _mapMatrix)
+            // {
+            //     foreach (var obj in objs)
+            //     {
+            //         Destroy(obj);
+            //     }
+            // }
+            LoadMapMatrix(newFile);
         }
     }
 }

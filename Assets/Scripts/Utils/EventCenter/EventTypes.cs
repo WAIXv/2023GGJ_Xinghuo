@@ -13,5 +13,7 @@ namespace Utils.EventCenter
         MouseClickUI = 4,
         
         RootMove = 5,
+        LevelFinish = 6,
+        OnJuice = 7,
     }
 }
