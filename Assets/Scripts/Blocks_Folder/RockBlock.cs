@@ -1,12 +1,9 @@
-﻿using Map_Folder;
-using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Utils.EventCenter;
 
 namespace Blocks_Folder
 {
-    public class EmptyBlock : BlockBase
+    public class RockBlock : BlockBase
     {
         protected override void Start()
         {
@@ -19,7 +16,6 @@ namespace Blocks_Folder
 
         private void OnMouseEnter(BlockBase cur)
         {
-            if(cur != this) return;
             
         }
 

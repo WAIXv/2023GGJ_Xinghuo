@@ -90,6 +90,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info:
     curState: 0
-    image: {fileID: 0}
+    image: {fileID: 6366798500245936782}
     stepReward: 0
     locate: {x: 0, y: 0}

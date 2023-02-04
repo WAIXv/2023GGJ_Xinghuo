@@ -34,7 +34,7 @@ namespace Map_Folder
             MapMgr.GetInstance();
         }
 
-        public MapCreator GetInstance()
+        public static MapCreator GetInstance()
         {
             return instance;
         }
