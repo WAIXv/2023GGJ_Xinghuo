@@ -19,6 +19,8 @@ namespace Map_Folder
         [SerializeField] private GameObject _rockPrefab;
         [SerializeField] private GameObject _emptyPrefab;
         [SerializeField] private GameObject _juciePrefab;
+        [SerializeField] private GameObject _bigJuciePrefab;
+        [SerializeField] private GameObject _hardSoulPrefab;
 
         public GameObject[][] _mapMatrix;
 
@@ -31,7 +33,6 @@ namespace Map_Folder
             _blockLength = _config.blockLength;
             LoadMapMatrix();
             CreateMap();
-            MapMgr.GetInstance();
             GameMgr.GetInstance().SetFinalandStartPoint();
         }
 
@@ -51,7 +52,16 @@ namespace Map_Folder
                 {
                     var obj = GameObject.Instantiate(_mapMatrix[j][i], placer + Vector2.right * iOffset + Vector2.down * jOffset, Quaternion.identity);
                     _mapMatrix[j][i] = obj;
-                    obj.GetComponent<BlockBase>().info.locate = new Vector2(j, i);
+                    var block = obj.GetComponent<BlockBase>();
+                    block.info.locate = new Vector2(j, i);
+                    block.info.image.sprite = block.info.SpritesSO.RandomSprite;
+
+                    if (j == 0)
+                    {
+                        var sprite = Resources.Load<RandomSprite_SO>("Frist_Empty_随机Sprite配置");
+                        block.info.image.sprite = sprite.RandomSprite;
+                    }
+                    
                     obj.transform.SetParent(_basePoint);
                     iOffset += _blockLength * 2;
                     if (i == _mapMatrix[j].Length - 1)
@@ -83,6 +93,12 @@ namespace Map_Folder
                             break;
                         case '2':
                             _mapMatrix[j][i] = _juciePrefab;
+                            break;
+                        case '3':
+                            _mapMatrix[j][i] = _bigJuciePrefab;
+                            break;
+                        case '4':
+                            _mapMatrix[j][i] = _hardSoulPrefab;
                             break;
                     }
                 }
