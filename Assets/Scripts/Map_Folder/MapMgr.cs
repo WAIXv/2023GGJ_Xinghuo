@@ -75,6 +75,7 @@ namespace Map_Folder
                 case 2:
                     break;
             }
+            
         }
 
         void SetAround(BlockBase block)
@@ -115,6 +116,13 @@ namespace Map_Folder
             {
                 downobj = matrix[(int)down.x][(int)down.y];
             }
+
+            switch (block.info.type)
+            {
+                case 2:
+                    GameMgr.GetInstance().moveStep += block.info.stepAward;
+                    break;
+            }
             
             if(leftobj) HandleMoveState(leftobj.GetComponent<BlockBase>());
             if(rightobj) HandleMoveState(rightobj.GetComponent<BlockBase>());
@@ -141,10 +149,6 @@ namespace Map_Folder
             {
                 case 1:
                     block.info.moveState = 1;
-                    break;
-                case 2:
-                    //获取移动点数
-                    GameMgr.GetInstance().moveStep += block.info.stepAward;
                     break;
             }
         }
