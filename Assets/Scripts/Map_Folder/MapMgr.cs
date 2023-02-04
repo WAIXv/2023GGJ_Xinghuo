@@ -1,38 +1,34 @@
 ﻿using Blocks_Folder;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 using Utils.@abstract;
 using Utils.EventCenter;
 using Utils.MonoMgr;
 
 namespace Map_Folder
 {
-    public class MapMgr : BaseManager<MapMgr>
+    public class MapMgr : MonoBehaviour
     {
+        [SerializeField] private GameObject redCoverPrefab;
+        [SerializeField] private GameObject blueCoverPrefab;
+        [SerializeField] private GameObject rootPrefab;
+        
         private BlockBase _blockCur;
         private BlockBase _blockPre;
 
-        public MapMgr()
+        private void Start()
         {
-            MonoMgr.GetInstance().AddUpdateListener(UpdateEvent);
+            redCoverPrefab = Instantiate(redCoverPrefab, GameObject.Find("Canvas").transform, true);
+            redCoverPrefab.SetActive(false);
+            
+            blueCoverPrefab = Instantiate(blueCoverPrefab, GameObject.Find("Canvas").transform, true);
+            blueCoverPrefab.SetActive(false);
+            
             var eventCenter = EventCenter.GetInstance();
             eventCenter.AddEventListener<BlockBase>(EventTypes.MouseEnterUI, OnMouseEnter);
             eventCenter.AddEventListener<BlockBase>(EventTypes.MouseExitUI, OnMouseExit);
             eventCenter.AddEventListener<BlockBase>(EventTypes.MouseClickUI, OnMouseClick);
-        }
-
-        void UpdateEvent()
-        {
-
-        }
-
-        void HandleRender()
-        {
-
-        }
-
-        void HandleData()
-        {
-
         }
 
         void OnMouseEnter(BlockBase cur)
@@ -43,11 +39,15 @@ namespace Map_Folder
             {
                 case 0:
                     //玩家可走
-                    cur.info.image.color = new Color(0, 0, 255, 101);
+                    blueCoverPrefab.transform.position = cur.transform.position;
+                    blueCoverPrefab.SetActive(true);
+                    blueCoverPrefab.transform.SetParent(cur.transform);
                     break;
                 case 1:
                     //玩家不可走
-                    cur.info.image.color = new Color(255, 0, 0, 101);
+                    redCoverPrefab.transform.position = cur.transform.position;
+                    redCoverPrefab.SetActive(true);
+                    redCoverPrefab.transform.SetParent(cur.transform);
                     break;
                 case 2:
                     //玩家走过
@@ -57,9 +57,10 @@ namespace Map_Folder
 
         void OnMouseExit(BlockBase pre)
         {
+            redCoverPrefab.SetActive(false);
+            blueCoverPrefab.SetActive(false);
             _blockPre = pre;
             Debug.Log("Exit");
-            pre.info.image.color = new Color(255, 255, 255, 255);
         }
 
         void OnMouseClick(BlockBase cur)
@@ -81,9 +82,18 @@ namespace Map_Folder
         void SetAround(BlockBase block)
         {
             EventCenter.GetInstance().EventTrigger(EventTypes.RootMove);
-            block.info.image.sprite = Resources.Load<Sprite>("tlieset_block(new)_17");
-            block.info.image.color = Color.white;
+            var obj = Instantiate(rootPrefab, GameObject.Find("Canvas").transform, true);
+            obj.transform.SetParent(block.transform);
+            obj.transform.position = block.transform.position;
+            obj.GetComponent<Image>().sprite = Resources.Load<RandomSprite_SO>("Root_随机Sprite配置").RandomSprite;
+
+            if (block.info.locate.x == 0)
+            {
+                obj.GetComponent<Image>().sprite = Resources.Load<Sprite>("root(new)_0");
+            }
+            
             block.info.moveState = 2;
+            blueCoverPrefab.SetActive(false);
             var locate = block.info.locate;
             var matrix = MapCreator.GetInstance()._mapMatrix;
             
@@ -121,14 +131,14 @@ namespace Map_Folder
             {
                 case 2:
                     GameMgr.GetInstance().moveStep += block.info.stepAward;
+                    block.info.image.sprite = Resources.Load<Sprite>("tlieset_block(new)_5");
                     break;
             }
             
             if(leftobj) HandleMoveState(leftobj.GetComponent<BlockBase>());
             if(rightobj) HandleMoveState(rightobj.GetComponent<BlockBase>());
             if(upobj) HandleMoveState(upobj.GetComponent<BlockBase>());
-            if(downobj) 
-                HandleMoveState(downobj.GetComponent<BlockBase>());
+            if(downobj) HandleMoveState(downobj.GetComponent<BlockBase>());
         }
 
         void HandleMoveState(BlockBase block)
