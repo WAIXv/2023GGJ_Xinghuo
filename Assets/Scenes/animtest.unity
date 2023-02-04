@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 440151678}
   - component: {fileID: 440151677}
   m_Layer: 5
-  m_Name: Image
+  m_Name: startoff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1202627191}
+  m_TargetGraphic: {fileID: 440151677}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -736,7 +736,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1483311820}
+  m_TargetGraphic: {fileID: 1758369269}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -802,7 +802,7 @@ GameObject:
   - component: {fileID: 1758369270}
   - component: {fileID: 1758369269}
   m_Layer: 5
-  m_Name: Image
+  m_Name: quitoff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
