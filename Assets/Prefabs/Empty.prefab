@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
-    selectState: 0
+    moveState: 1
     type: 0
     image: {fileID: 6366798500245936782}
     stepReward: 0
