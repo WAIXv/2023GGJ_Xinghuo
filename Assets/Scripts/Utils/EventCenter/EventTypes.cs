@@ -8,23 +8,10 @@ namespace Utils.EventCenter
         
         UI_UpdateProgressBar=99,
 
-        #region 相机运动
-
-        /// <summary>
-        /// 传输相机相对信息
-        /// </summary>
-        Camera_UpdateRelativeInfo,
+        MouseEnterUI = 2,
+        MouseExitUI = 3,
+        MouseClickUI = 4,
         
-        /// <summary>
-        /// 启用外部运动
-        /// </summary>
-        Camera_ExternMotionStart,
-        
-        /// <summary>
-        /// 外部运动结束
-        /// </summary>
-        Camera_ExternMotionOver,
-
-        #endregion
+        RootMove = 5,
     }
 }
