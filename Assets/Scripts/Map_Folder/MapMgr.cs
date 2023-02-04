@@ -13,26 +13,10 @@ namespace Map_Folder
 
         public MapMgr()
         {
-            MonoMgr.GetInstance().AddUpdateListener(UpdateEvent);
             var eventCenter = EventCenter.GetInstance();
             eventCenter.AddEventListener<BlockBase>(EventTypes.MouseEnterUI, OnMouseEnter);
             eventCenter.AddEventListener<BlockBase>(EventTypes.MouseExitUI, OnMouseExit);
             eventCenter.AddEventListener<BlockBase>(EventTypes.MouseClickUI, OnMouseClick);
-        }
-
-        void UpdateEvent()
-        {
-
-        }
-
-        void HandleRender()
-        {
-
-        }
-
-        void HandleData()
-        {
-
         }
 
         void OnMouseEnter(BlockBase cur)
