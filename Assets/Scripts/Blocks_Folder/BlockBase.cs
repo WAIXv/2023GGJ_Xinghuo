@@ -14,22 +14,22 @@ namespace Blocks_Folder
 
         protected EventCenter EventCenter;
 
-        private void Start()
+        protected virtual void Start()
         {
             EventCenter = EventCenter.GetInstance();
         }
 
-        public virtual void OnPointerEnter(PointerEventData eventData)
+        public void OnPointerEnter(PointerEventData eventData)
         {
             EventCenter.EventTrigger(EventTypes.MouseEnterUI,this);
         }
 
-        public virtual void OnPointerExit(PointerEventData eventData)
+        public void OnPointerExit(PointerEventData eventData)
         {
             EventCenter.EventTrigger(EventTypes.MouseExitUI,this);
         }
 
-        public virtual void OnPointerClick(PointerEventData eventData)
+        public void OnPointerClick(PointerEventData eventData)
         {
             EventCenter.EventTrigger(EventTypes.MouseClickUI,this);
         }
