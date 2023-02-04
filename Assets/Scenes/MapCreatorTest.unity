@@ -123,6 +123,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &421534509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 421534511}
+  - component: {fileID: 421534510}
+  m_Layer: 0
+  m_Name: GameMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &421534510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421534509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d0d44722f80c54e978f6689c74afd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveStep: 3
+  startPoint: {x: 0, y: 0}
+  finalPoint: {x: 0, y: 0}
+--- !u!4 &421534511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421534509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1058.7339, y: 218.35344, z: -206.23091}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1113593533
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,10 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9791e18f3d4d0fa4bf78d95cb19db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textAsset: {fileID: 4900000, guid: e42623d1941b7f8439988a8a84766846, type: 3}
-  _basePoint: {fileID: 2009712456}
-  _blockLength: 102
-  _blockHeight: 102
+  _config: {fileID: 11400000, guid: b72186c6a9689c248935244d66aebc3c, type: 2}
   _rockPrefab: {fileID: 8429490994457382949, guid: 5a58421b6e7e02042aca940485942130, type: 3}
   _emptyPrefab: {fileID: 8429490994457382949, guid: 879e88752cdc8ad4088732da5a4cc426, type: 3}
   _juciePrefab: {fileID: 8429490994457382949, guid: 642aac283f38aae4390eb7ba2367b95d, type: 3}
