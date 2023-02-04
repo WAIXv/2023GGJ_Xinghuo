@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4933857240115687853, guid: 687e6dee1ddc09846b2b2cf70da6bc42, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,7 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
-    curState: 0
-    image: {fileID: 0}
+    moveState: 1
+    type: 0
+    image: {fileID: 6366798500245936782}
     stepReward: 0
     locate: {x: 0, y: 0}

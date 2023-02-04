@@ -11,5 +11,7 @@ namespace Utils.EventCenter
         MouseEnterUI = 2,
         MouseExitUI = 3,
         MouseClickUI = 4,
+        
+        RootMove = 5,
     }
 }

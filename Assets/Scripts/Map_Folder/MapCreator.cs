@@ -32,9 +32,10 @@ namespace Map_Folder
             LoadMapMatrix();
             CreateMap();
             MapMgr.GetInstance();
+            GameMgr.GetInstance().SetFinalandStartPoint();
         }
 
-        public MapCreator GetInstance()
+        public static MapCreator GetInstance()
         {
             return instance;
         }
