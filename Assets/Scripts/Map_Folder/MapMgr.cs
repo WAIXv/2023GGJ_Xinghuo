@@ -110,8 +110,9 @@ namespace Map_Folder
             
             if(leftobj) HandleMoveState(leftobj.GetComponent<BlockBase>());
             if(rightobj) HandleMoveState(rightobj.GetComponent<BlockBase>());
-            if(upobj) HandleMoveState(upobj.GetComponent<BlockBase>());   
-            if(downobj) HandleMoveState(downobj.GetComponent<BlockBase>());
+            if(upobj) HandleMoveState(upobj.GetComponent<BlockBase>());
+            if(downobj) 
+                HandleMoveState(downobj.GetComponent<BlockBase>());
         }
 
         void HandleMoveState(BlockBase block)
