@@ -16,5 +16,5 @@ MonoBehaviour:
   originStep: 10
   startPoint: {x: 0, y: 3}
   finalPoint: {x: 3, y: 5}
-  blockLength: 102
-  blockHeight: 102
+  blockLength: 38.25
+  blockHeight: 38.25
