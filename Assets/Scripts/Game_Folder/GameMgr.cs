@@ -29,19 +29,8 @@ public class GameMgr : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            mousecur = mousepre;
-        }
-        if (Input.GetMouseButton(1))
-        {
-            OnMouseRightClick();
-        }
+        OnMouseRightClick();
 
-        if (Input.GetMouseButtonUp(1))
-        {
-            mousepre = mousecur;
-        }
     }
 
     public static GameMgr GetInstance()
@@ -62,9 +51,7 @@ public class GameMgr : MonoBehaviour
 
     void OnMouseRightClick()
     {
-        mousecur = Input.mousePosition;
-        delta = mousecur - mousepre;
-        mousepre = mousecur;
+        var delta = Input.mouseScrollDelta * -50f;
         
         rootPoint.localPosition = new Vector3(rootPoint.localPosition.x, rootPoint.localPosition.y + delta.y,
             rootPoint.localPosition.z);

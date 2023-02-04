@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a10fc044ee04ac7990dbda1b66f8314, type: 3}
   m_Name: "HardSoul_\u968F\u673ASprite\u914D\u7F6E"
   m_EditorClassIdentifier: 
-  _sprites: []
+  _sprites:
+  - {fileID: 4091174404589690460, guid: e4fb274ae79a65c4a9165600483b04e4, type: 3}
+  - {fileID: -7819634641295259895, guid: e4fb274ae79a65c4a9165600483b04e4, type: 3}
+  - {fileID: -6236583073098240954, guid: e4fb274ae79a65c4a9165600483b04e4, type: 3}
+  - {fileID: 4791646899718223080, guid: e4fb274ae79a65c4a9165600483b04e4, type: 3}

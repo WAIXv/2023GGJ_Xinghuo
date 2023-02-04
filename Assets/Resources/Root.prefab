@@ -92,5 +92,6 @@ MonoBehaviour:
     moveState: 2
     type: 0
     image: {fileID: 6366798500245936782}
+    SpritesSO: {fileID: 11400000, guid: b7e37e70003cade46b4eb153bdb078cb, type: 2}
     stepAward: 0
     locate: {x: 0, y: 0}

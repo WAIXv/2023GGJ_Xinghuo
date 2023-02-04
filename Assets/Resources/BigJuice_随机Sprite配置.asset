@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a10fc044ee04ac7990dbda1b66f8314, type: 3}
   m_Name: "BigJuice_\u968F\u673ASprite\u914D\u7F6E"
   m_EditorClassIdentifier: 
-  _sprites: []
+  _sprites:
+  - {fileID: 3688468995818205924, guid: df9a22d203813a1498ac64b458a6351f, type: 3}
+  - {fileID: 6202672434836731997, guid: df9a22d203813a1498ac64b458a6351f, type: 3}
