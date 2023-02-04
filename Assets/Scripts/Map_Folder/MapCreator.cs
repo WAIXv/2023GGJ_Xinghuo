@@ -6,11 +6,14 @@ namespace Map_Folder
 {
     public class MapCreator : MonoBehaviour
     {
-        [SerializeField] private TextAsset _textAsset;
-        [SerializeField] private RectTransform _basePoint;
+        [SerializeField] private LevelConfig _config;
+
+        private static MapCreator instance;
+        private TextAsset _textAsset;
+        private RectTransform _basePoint;
         
-        [SerializeField] private float _blockLength;
-        [SerializeField] private float _blockHeight;
+        private float _blockLength;
+        private float _blockHeight;
 
         [Header("图块预制体设定")]
         [SerializeField] private GameObject _rockPrefab;
@@ -21,9 +24,19 @@ namespace Map_Folder
 
         private void Start()
         {
+            instance = this;
+            _textAsset = _config.levelConfig;
+            _basePoint = GameObject.Find("MapBasePoint").GetComponent<RectTransform>();
+            _blockHeight = _config.blockHeight;
+            _blockLength = _config.blockLength;
             LoadMapMatrix();
             CreateMap();
             MapMgr.GetInstance();
+        }
+
+        public MapCreator GetInstance()
+        {
+            return instance;
         }
 
         private void CreateMap()
@@ -36,6 +49,7 @@ namespace Map_Folder
                 for (var i = 0; i < _mapMatrix[j].Length; i++)
                 {
                     var obj = GameObject.Instantiate(_mapMatrix[j][i], placer + Vector2.right * iOffset + Vector2.down * jOffset, Quaternion.identity);
+                    _mapMatrix[j][i] = obj;
                     obj.GetComponent<BlockBase>().info.locate = new Vector2(j, i);
                     obj.transform.SetParent(_basePoint);
                     iOffset += _blockLength * 2;
@@ -77,7 +91,15 @@ namespace Map_Folder
 
         public void ReloadMap()
         {
-            
+            foreach (var objs in _mapMatrix)
+            {
+                foreach (var obj in objs)
+                {
+                    Destroy(obj);
+                }
+            }
+            LoadMapMatrix();
+            CreateMap();
         }
     }
 }
