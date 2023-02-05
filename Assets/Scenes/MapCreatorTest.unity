@@ -480,6 +480,13 @@ MonoBehaviour:
   leafObj: {fileID: 657968492}
   failPanel: {fileID: 51896703}
   BGM: {fileID: 1848255904}
+  roll: {fileID: 0}
+  alphaCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &421534511
 Transform:
   m_ObjectHideFlags: 0
@@ -556,7 +563,7 @@ MonoBehaviour:
     m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 1
@@ -990,7 +997,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 90}
+  m_SizeDelta: {x: 180, y: 53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1384556683
 MonoBehaviour:
