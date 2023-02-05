@@ -1,4 +1,5 @@
 using System.Collections;
+using Game_Folder.UIScripts;
 using Map_Folder;
 using UnityEngine;
 using Utils.@abstract;
@@ -14,8 +15,13 @@ namespace Game_Folder
             var mapCreator = MapCreator.GetInstance();
             mapCreator.LoadMapMatrix(Resources.Load<TextAsset>("LevelMaptxt/level_0"));
             mapCreator.CreateMap();
-            GameMgr.GetInstance().gameOn = true;
-            GameMgr.GetInstance().endY = -485f + (mapCreator._mapMatrix.Length - 1) * 80f;
+            var gameMgr = GameMgr.GetInstance();
+            gameMgr.gameOn = true;
+            gameMgr.endY = -485f + (mapCreator._mapMatrix.Length - 1) * 80f;
+            gameMgr.StartCoroutine(gameMgr.Level0Enter());
+            var leaf = gameMgr.leafObj;
+            leaf.SetActive(true);
+            leaf.GetComponent<LeafScript>().textComp.text = gameMgr.moveStep.ToString();
         }
 
         void OnQuitClick()
