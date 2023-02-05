@@ -9,10 +9,8 @@ namespace Blocks_Folder
     public class BlockBase : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler
     {
         public BlockAttribute info;
-        
-        protected Queue<int> _stateQueue;
 
-        protected EventCenter EventCenter;
+        private EventCenter EventCenter;
 
         protected virtual void Start()
         {

@@ -132,7 +132,13 @@ namespace Map_Folder
                 case 2:
                     GameMgr.GetInstance().moveStep += block.info.stepAward;
                     block.info.image.sprite = Resources.Load<Sprite>("tlieset_block(new)_5");
+                    EventCenter.GetInstance().EventTrigger(EventTypes.OnJuice,block.info.stepAward);
                     break;
+                case 3:
+                    //终点逻辑
+                    EventCenter.GetInstance().EventTrigger(EventTypes.LevelFinish);
+                    break;
+
             }
             
             if(leftobj) HandleMoveState(leftobj.GetComponent<BlockBase>());
