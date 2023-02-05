@@ -1,4 +1,5 @@
 ﻿using Blocks_Folder;
+using Game_Folder;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,9 +14,12 @@ namespace Map_Folder
         [SerializeField] private GameObject redCoverPrefab;
         [SerializeField] private GameObject blueCoverPrefab;
         [SerializeField] private GameObject rootPrefab;
-        
+
         private BlockBase _blockCur;
         private BlockBase _blockPre;
+        private GameMgr _gameMgr;
+        private AudioMgr _audioMgr;
+        private AudioSource _BGM;
 
         private void Start()
         {
@@ -25,6 +29,9 @@ namespace Map_Folder
             blueCoverPrefab = Instantiate(blueCoverPrefab, GameObject.Find("Canvas").transform, true);
             blueCoverPrefab.SetActive(false);
             
+            _gameMgr = GameMgr.GetInstance();
+            _audioMgr = GameObject.Find("AudioMgr").GetComponent<AudioMgr>();
+            _BGM = GameObject.Find("BGM").GetComponent<AudioSource>();
             var eventCenter = EventCenter.GetInstance();
             eventCenter.AddEventListener<BlockBase>(EventTypes.MouseEnterUI, OnMouseEnter);
             eventCenter.AddEventListener<BlockBase>(EventTypes.MouseExitUI, OnMouseExit);
@@ -33,21 +40,22 @@ namespace Map_Folder
 
         void OnMouseEnter(BlockBase cur)
         {
+            if(!_gameMgr.gameOn) return;
+            
             _blockCur = cur;
-            Debug.Log("Enter");
             switch (cur.info.moveState)
             {
                 case 0:
                     //玩家可走
                     blueCoverPrefab.transform.position = cur.transform.position;
                     blueCoverPrefab.SetActive(true);
-                    blueCoverPrefab.transform.SetParent(cur.transform);
+                    // blueCoverPrefab.transform.SetParent(cur.transform);
                     break;
                 case 1:
                     //玩家不可走
                     redCoverPrefab.transform.position = cur.transform.position;
                     redCoverPrefab.SetActive(true);
-                    redCoverPrefab.transform.SetParent(cur.transform);
+                    // redCoverPrefab.transform.SetParent(cur.transform);
                     break;
                 case 2:
                     //玩家走过
@@ -60,12 +68,17 @@ namespace Map_Folder
             redCoverPrefab.SetActive(false);
             blueCoverPrefab.SetActive(false);
             _blockPre = pre;
-            Debug.Log("Exit");
         }
 
         void OnMouseClick(BlockBase cur)
         {
-            Debug.Log("Clik");
+            if (_gameMgr.moveStep == 0)
+            {
+                _gameMgr.moveStep--;
+                EventCenter.GetInstance().EventTrigger(EventTypes.RootMove);
+                return;
+            }
+            
             switch (cur.info.moveState)
             {
                 case 0:
@@ -86,6 +99,7 @@ namespace Map_Folder
             obj.transform.SetParent(block.transform);
             obj.transform.position = block.transform.position;
             obj.GetComponent<Image>().sprite = Resources.Load<RandomSprite_SO>("Root_随机Sprite配置").RandomSprite;
+            _audioMgr.PlayeBlockAudio(block);
 
             if (block.info.locate.x == 0)
             {

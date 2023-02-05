@@ -1,4 +1,5 @@
 using System;
+using Blocks_Folder;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -15,26 +16,27 @@ namespace Game_Folder.UIScripts
 
         private void Start()
         {
-            EventCenter.GetInstance().AddEventListener(EventTypes.RootMove,onMove);
+            EventCenter.GetInstance().AddEventListener(EventTypes.RootMove,OnMove);
             EventCenter.GetInstance().AddEventListener<int>(EventTypes.OnJuice,OnJuice);
             _gameMgr = GameMgr.GetInstance();
         }
 
-        void onMove()
+        void OnMove()
         {
             if (_gameMgr == null)
                 _gameMgr = GameMgr.GetInstance();
-            textComp.text = _gameMgr.moveStep.ToString();
+
+            textComp.text = _gameMgr.moveStep < 0 ? 0.ToString() : _gameMgr.moveStep.ToString();
         }
 
         void OnJuice(int stepAward)
         {
             textComp.text = _gameMgr.moveStep.ToString();
-            if (stepAward > 7)
+            if (stepAward == 12)
             {
                 effectAnim.Play("12",0,0f);
             }
-            else
+            else if(stepAward == 6)
             {
                 effectAnim.Play("6",0,0f);
 

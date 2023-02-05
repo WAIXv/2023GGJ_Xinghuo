@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Blocks_Folder;
+using Game_Folder;
 using UnityEngine;
 
 namespace Map_Folder
@@ -8,8 +9,7 @@ namespace Map_Folder
     {
         [SerializeField] private LevelConfig _config;
 
-        private static MapCreator instance;
-        private TextAsset _textAsset;
+        private static MapCreator _instance;
         private RectTransform _basePoint;
         
         private float _blockLength;
@@ -27,8 +27,7 @@ namespace Map_Folder
 
         private void Start()
         {
-            instance = this;
-            _textAsset = _config.levelConfig;
+            _instance = this;
             _basePoint = GameObject.Find("MapBasePoint").GetComponent<RectTransform>();
             _blockHeight = _config.blockHeight;
             _blockLength = _config.blockLength;
@@ -36,7 +35,7 @@ namespace Map_Folder
 
         public static MapCreator GetInstance()
         {
-            return instance;
+            return _instance;
         }
 
         public void CreateMap()
@@ -108,7 +107,7 @@ namespace Map_Folder
             
         }
 
-        public void ReloadMap(TextAsset newFile)
+        public void ReloadMap(int levelIndex)
         {
             // foreach (var objs in _mapMatrix)
             // {
@@ -117,7 +116,22 @@ namespace Map_Folder
             //         Destroy(obj);
             //     }
             // }
-            LoadMapMatrix(newFile);
+            var txt = new TextAsset();
+            switch (levelIndex)
+            {
+                case 0:
+                    txt = Resources.Load<TextAsset>("LevelMaptxt/level_0");
+                    break;
+                case 1:
+                    txt = Resources.Load<TextAsset>("LevelMaptxt/level_1");
+                    break;
+                case 2:
+                    txt = Resources.Load<TextAsset>("LevelMaptxt/level_2");
+                    break;
+            }
+            
+            LoadMapMatrix(txt);
+            CreateMap();
         }
     }
 }
