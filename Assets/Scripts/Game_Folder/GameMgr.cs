@@ -135,15 +135,25 @@ namespace Game_Folder
                 SlideDown();
                 yield return new WaitForSeconds(0.01f);
             }
-
-            // var time = 3f;
-            // var timer = 0f;
-            // var rollImage = roll.GetComponent<Image>();
-            // while (timer > 0f)
+            //
+            // roll.SetActive(true);
+            // var blinkTime = 4;
+            // for(int i = 0; i <= blinkTime; i++)
             // {
-            //     timer -= Time.deltaTime;
-            //     yield return new WaitForSeconds(Time.deltaTime);
+            //     Debug.LogError("666");
+            //     var time = 3f;
+            //     var timer = 0f;
+            //     var rollImage = roll.GetComponent<Image>();
+            //     var alpha = 0f;
+            //     while (time > 0f)
+            //     {
+            //         time -= Time.deltaTime;
+            //         alpha = alphaCurve.Evaluate(timer / time);
+            //         yield return new WaitForSeconds(Time.deltaTime);
+            //         rollImage.color = new Color(rollImage.color.r, rollImage.color.g, rollImage.color.b, alpha);
+            //     }
             // }
+            // roll.SetActive(false);
         }
 
         IEnumerator Level0Finish()
