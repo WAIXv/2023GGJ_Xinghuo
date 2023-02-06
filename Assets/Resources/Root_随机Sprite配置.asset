@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: "Root_\u968F\u673ASprite\u914D\u7F6E"
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 3598131765713614939, guid: e18c18e33431f444690a7603b96243b7, type: 3}
   - {fileID: 2935740783016238508, guid: e18c18e33431f444690a7603b96243b7, type: 3}
   - {fileID: 2876641433319948225, guid: e18c18e33431f444690a7603b96243b7, type: 3}
   - {fileID: 9053381336217314843, guid: e18c18e33431f444690a7603b96243b7, type: 3}

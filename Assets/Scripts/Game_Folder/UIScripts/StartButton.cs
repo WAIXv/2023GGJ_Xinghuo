@@ -1,35 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Game_Folder;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StartButton : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler
+namespace Game_Folder.UIScripts
 {
-    [SerializeField] private Image _image;
-    [SerializeField] private Sprite onSprite;
-    [SerializeField] private Sprite offSprite;
-
-    private void Start()
+    public class StartButton : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler
     {
-        _image = GetComponent<Image>();
-    }
+        [SerializeField] private Image _image;
+        [SerializeField] private Sprite onSprite;
+        [SerializeField] private Sprite offSprite;
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        _image.sprite = onSprite;
-    }
+        private void Start()
+        {
+            _image = GetComponent<Image>();
+        }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        _image.sprite = offSprite;
-    }
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            _image.sprite = onSprite;
+        }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        UIMgr.GetInstance().OnStartClick();
-        gameObject.SetActive(false);
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            _image.sprite = offSprite;
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            GameMgr.GetInstance().OnStartClick();
+            gameObject.SetActive(false);
+        }
     }
 }
