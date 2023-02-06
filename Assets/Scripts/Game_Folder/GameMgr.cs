@@ -104,7 +104,7 @@ namespace Game_Folder
                     break;
             }
         }
-    }
+    
 
         IEnumerator OutOfMoveStep()
         {
